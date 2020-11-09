@@ -19,6 +19,7 @@ void setClock();
 void client_http();
 
 void setup() {
+    //pinMode(LED,OUTPUT);
     Serial.begin(9600);
     SPI.begin(); // Init SPI bus
     rfid.PCD_Init(); // Init MFRC522
@@ -98,7 +99,7 @@ void printDec(byte *buffer, byte bufferSize) {
     }
 }
 void setClock() {
-    configTime(0, 0, "pool.ntp.org", "time.nist.gov");
+    configTime(3600,3600, "2.rs.pool.ntp.org","1.hu.pool.ntp.org");
 
     Serial.print(F("Waiting for NTP time sync: "));
     time_t nowSecs = time(nullptr);
@@ -106,7 +107,7 @@ void setClock() {
         delay(500);
         Serial.print(F("."));
         yield();
-        nowSecs = time(nullptr);
+        nowSecs = time(nullptr)+3600;
     }
 
     Serial.println();

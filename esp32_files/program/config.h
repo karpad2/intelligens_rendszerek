@@ -11,6 +11,7 @@
 #define WIFI_PASSWORD "asdfghjkl123#"
 #define FIREBASE_HOST "https://obudai-intelligens-r.firebaseio.com/times.json" 
 #define basic_json "{\"RFID-code\" : \"valami hexa\",\"time\" : \"timestamp\"}"
+#define LED 2
 
 
 #endif //PROGRAM_INO_CONFIG_H
