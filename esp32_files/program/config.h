@@ -9,8 +9,8 @@
 #define RST_PIN   22
 #define WIFI_SSID "TP-Link"
 #define WIFI_PASSWORD "asdfghjkl123#"
-#define FIREBASE_HOST "https://obudai-intelligens-r.firebaseio.com/times.json" 
-#define basic_json "{\"RFID-code\" : \"valami hexa\",\"time\" : \"timestamp\"}"
+#define FIREBASE_HOST "http://192.168.1.140/timers.php"
+#define basic_json "{\"RFID-code\" : \"valami hexa\"}"
 #define LED 2
 
 

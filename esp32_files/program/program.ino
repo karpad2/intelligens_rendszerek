@@ -123,24 +123,27 @@ void client_http()
         {
             // Add a scoping block for HTTPClient https to make sure it is destroyed before WiFiClientSecure *client is
             HTTPClient http;
+             my_elements["RFID-code"]=s_rfid;
+             Serial.println(s_rfid);
             Serial.print("[HTTPS] begin...\n");
             if (http.begin(*client, FIREBASE_HOST)) {  // HTTPS
                 Serial.print("[HTTPS] POST...\n");
-                http.addHeader("Content-Type", "application/json");
+                http.addHeader("Content-Type","application/x-www-form-urlencoded");
                 //String httpRequestData = "";
 
                 // start connection and send HTTP header
                // String
                my_elements["RFID-code"]=s_rfid;
+               Serial.println(s_rfid);
                String l_time=String(asctime(&timeinfo));
-               my_elements["time"]=l_time.substring(0,l_time.length()-1);
+               //my_elements["time"]=l_time.substring(0,l_time.length()-1);
                //Serial.println(JSON.stringify(my_elements));
-                int httpCode = http.POST( JSON.stringify(my_elements));
-                // int httpCode = http.GET();
+               // int httpCode = http.POST( JSON.stringify(my_elements));
+                 int httpCode = http.GET();
                 // httpCode will be negative on error
                 if (httpCode > 0) {
                     // HTTP header has been send and Server response header has been handled
-                    Serial.printf("[HTTPS] POST ... code: %d\n", httpCode);
+                    Serial.printf("[HTTP] POST ... code: %d\n", httpCode);
 
                     // file found at server
                     if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {
